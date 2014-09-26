@@ -35,11 +35,17 @@ angular.module('band', ['ionic', 'band.controllers', 'band.services'])
 
     // Each tab has its own nav history stack:
 
+    .state('login', {
+      url: '/login',
+          templateUrl: 'login/login.html',
+          controller: 'LoginCtrl'
+    })
+
     .state('tab.profile', {
       url: '/profile',
       views: {
         'tab-profile': {
-          templateUrl: 'templates/tab-profile.html',
+          templateUrl: 'profile/profile.html',
           controller: 'ProfileCtrl'
         }
       }
@@ -49,7 +55,7 @@ angular.module('band', ['ionic', 'band.controllers', 'band.services'])
       url: '/friends',
       views: {
         'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
+          templateUrl: 'friends/friends.html',
           controller: 'FriendsCtrl'
         }
       }
@@ -58,7 +64,7 @@ angular.module('band', ['ionic', 'band.controllers', 'band.services'])
       url: '/friend/:friendId',
       views: {
         'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
+          templateUrl: 'friends/friend-detail.html',
           controller: 'FriendDetailCtrl'
         }
       }
@@ -68,7 +74,7 @@ angular.module('band', ['ionic', 'band.controllers', 'band.services'])
       url: '/search',
       views: {
         'tab-search': {
-          templateUrl: 'templates/tab-search.html',
+          templateUrl: 'search/search.html',
           controller: 'SearchCtrl'
         }
       }
@@ -78,14 +84,14 @@ angular.module('band', ['ionic', 'band.controllers', 'band.services'])
       url: '/messages',
       views: {
         'tab-messages': {
-          templateUrl: 'templates/tab-messages.html',
+          templateUrl: 'messages/messages.html',
           controller: 'MessagesCtrl'
         }
       }
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/profile');
+  $urlRouterProvider.otherwise('/login');
 
 });
 
