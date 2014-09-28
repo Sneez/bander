@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('band.config', [])
+angular.module('bander.config', [])
    .constant('loginRedirectPath', '/login')
-   .constant('FBURL', 'https://findaband.firebaseio.com/')
+   .constant('FBURL', 'https://bander.firebaseio.com/')
 ;

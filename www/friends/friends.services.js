@@ -1,4 +1,4 @@
-angular.module('band.services')
+angular.module('bander.services')
 
 /**
  * A simple example service that returns some data.

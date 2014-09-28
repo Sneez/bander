@@ -1,4 +1,4 @@
-angular.module('band')
+angular.module('bander')
 
 
 .controller('ProfileCtrl', ['$scope', 'simpleLogin', '$location', function($scope, simpleLogin, $location) {

@@ -1,4 +1,4 @@
-angular.module('band')
+angular.module('bander')
 
 .controller('FriendsCtrl', function($scope, Friends) {
   $scope.friends = Friends.all();

@@ -43,6 +43,7 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
             password: pass,
             rememberMe: true
           });
+          console.log("suck it fatty");
         },
 
         logout: function() {

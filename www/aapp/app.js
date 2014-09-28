@@ -1,7 +1,7 @@
-angular.module('band.controllers', []);
-angular.module('band.services', []);
+angular.module('bander.controllers', []);
+angular.module('bander.services', []);
 
-angular.module('band', ['ionic', 'band.controllers', 'band.services'])
+angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'simpleLogin', 'firebase'])
 
 
 .run(function($ionicPlatform) {
