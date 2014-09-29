@@ -4,10 +4,10 @@
 		<div class="login">
 			<form action="javascript:;">
 				<label class="item item-input">
-					<input type="text" placeholder="email" ng-model="email">
+					<input type="email" placeholder="email" ng-model="email">
 				</label>
 				<label class="item item-input">
-					<input type="password" placeholder="password" ng-model="pass">
+					<input type="password" placeholder="password" ng-model="pass" ng-minlength=4>
 				</label>
     			<button ng-click="login(email, pass)">Log In</button>
 			</form>
@@ -16,18 +16,18 @@
 		<div class="register">
 			<form action="javascript:;">
 				<label class="item item-input">
-					<input type="text" ng-model="nameR" placeholder="your name">
+					<input type="text" ng-model="nameR" placeholder="your name" ng-minlength=2 >
 				</label>
 				<label class="item item-input">
-					<input type="text" ng-model="emailR" placeholder="email">
+					<input type="email" ng-model="emailR" placeholder="email">
 				</label>
 				<label class="item item-input">
-					<input type="password" ng-model="passwordR" placeholder="password">
+					<input type="password" ng-model="passwordR" placeholder="password" ng-minlength=4>
 				</label>
 				<!-- <label class="item item-input"> -->
 					<!-- <input type="password" placeholder="confirm password" id="confirmR"> -->
 				<!-- </label>				 -->
-    			<button ng-click="createAccount(emailR, passwordR, nameR)">Create Account</button>
+    			<button ng-click="createAccount(nameR, emailR, passwordR)">Create Account</button>
 			</form>
 		</div>
   </ion-content>

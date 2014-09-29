@@ -5,42 +5,42 @@ angular.module('bander')
     $scope.email = null;
     $scope.pass = null;
     $scope.confirm = null;
-    $scope.createMode = false;
 
     $scope.login = function(email, pass) {
-      console.log("suck it fatty");
+      console.log(email, pass);
       $scope.err = null;
       simpleLogin.login(email, pass)
-        .then(function(/* user */) {
-          $location.path('/account');
+        .then(function(user) {
+          console.log("fart")
+          console.log(user);
+          // $location.path('/tab/profile');
         }, function(err) {
+          console.log(err);
           $scope.err = errMessage(err);
         });
     };
 
-    $scope.createAccount = function() {
-      console.log("git money niggas")
+    $scope.createAccount = function(name, email, password) {
+      console.log(name, email, password);
       $scope.err = null;
-      if( assertValidAccountProps() ) {
-        simpleLogin.createAccount($scope.email, $scope.pass)
-          .then(function(/* user */) {
-            $location.path('/account');
-          }, function(err) {
-            $scope.err = errMessage(err);
-          });
-      }
+      simpleLogin.createAccount(name, email, password)
+        .then(function(user) {
+          console.log(user);
+          // $location.path('/tab/profile');
+        }, function(err) {
+        console.log(err);
+          $scope.err = errMessage(err);
+        });
     };
 
     function assertValidAccountProps() {
       if( !$scope.email ) {
         $scope.err = 'Please enter an email address';
       }
-      else if( !$scope.pass || !$scope.confirm ) {
+      else if( !$scope.pass ) {
         $scope.err = 'Please enter a password';
       }
-      else if( $scope.createMode && $scope.pass !== $scope.confirm ) {
-        $scope.err = 'Passwords do not match';
-      }
+      console.log($scope.err);
       return !$scope.err;
     }
 

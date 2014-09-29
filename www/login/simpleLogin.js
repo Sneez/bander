@@ -43,14 +43,13 @@ angular.module('simpleLogin', ['firebase', 'firebase.utils', 'changeEmail'])
             password: pass,
             rememberMe: true
           });
-          console.log("suck it fatty");
         },
 
         logout: function() {
           auth.$logout();
         },
 
-        createAccount: function(email, pass, name) {
+        createAccount: function(name, email, pass) {
           return auth.$createUser(email, pass)
             .then(function() {
               // authenticate so we have permission to write to Firebase
