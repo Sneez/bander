@@ -8,6 +8,7 @@ angular.module('bander')
     $scope.createMode = false;
 
     $scope.login = function(email, pass) {
+      console.log("suck it fatty");
       $scope.err = null;
       simpleLogin.login(email, pass)
         .then(function(/* user */) {
