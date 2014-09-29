@@ -1,48 +1,15 @@
 angular.module('bander')
 
 
-.controller('ProfileCtrl', ['$scope', 'simpleLogin', '$location', function($scope, simpleLogin, $location) {
-  $scope.email = null;
-  $scope.pass = null;
-  $scope.confirm = null;
-  $scope.createMode = false;
+.controller('ProfileCtrl', ['$scope', 'simpleLogin', '$location', '$timeout', '$firebase', 'fbutil', function($scope, simpleLogin, $location, $timeout, $firebase, fbutil) {
 
-  $scope.login = function(email, pass) {
-    $scope.err = null;
-    simpleLogin.login(email, pass)
-      .then(function(/* user */) {
-        $location.path('/account');
-      }, function(err) {
-        $scope.err = errMessage(err);
-      });
-  };
 
-  $scope.createAccount = function() {
-    $scope.err = null;
-    if( assertValidAccountProps() ) {
-      simpleLogin.createAccount($scope.email, $scope.pass)
-        .then(function(/* user */) {
-          $location.path('/account');
-        }, function(err) {
-          $scope.err = errMessage(err);
-        });
-    }
-  };
-
-  function assertValidAccountProps() {
-    if( !$scope.email ) {
-      $scope.err = 'Please enter an email address';
-    }
-    else if( !$scope.pass || !$scope.confirm ) {
-      $scope.err = 'Please enter a password';
-    }
-    else if( $scope.createMode && $scope.pass !== $scope.confirm ) {
-      $scope.err = 'Passwords do not match';
-    }
-    return !$scope.err;
-  }
-
-  function errMessage(err) {
-    return angular.isObject(err) && err.code? err.code : err + '';
-  }
+  simpleLogin.getUser().then(function(auth){
+    $timeout(function(){
+      $scope.auth = auth;
+      var path = 'users/' + auth.uid;
+      $scope.user = fbutil.syncObject(path);
+    },0);
+  });
+  console.log($scope.auth);
 }]);

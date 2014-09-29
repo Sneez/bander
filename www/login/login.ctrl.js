@@ -13,7 +13,7 @@ angular.module('bander')
         .then(function(user) {
           console.log("fart")
           console.log(user);
-          // $location.path('/tab/profile');
+          $location.path('/tab/profile');
         }, function(err) {
           console.log(err);
           $scope.err = errMessage(err);
@@ -26,7 +26,7 @@ angular.module('bander')
       simpleLogin.createAccount(name, email, password)
         .then(function(user) {
           console.log(user);
-          // $location.path('/tab/profile');
+          $location.path('/tab/profile');
         }, function(err) {
         console.log(err);
           $scope.err = errMessage(err);
