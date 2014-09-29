@@ -33,17 +33,6 @@ angular.module('bander')
         });
     };
 
-    function assertValidAccountProps() {
-      if( !$scope.email ) {
-        $scope.err = 'Please enter an email address';
-      }
-      else if( !$scope.pass ) {
-        $scope.err = 'Please enter a password';
-      }
-      console.log($scope.err);
-      return !$scope.err;
-    }
-
     function errMessage(err) {
       return angular.isObject(err) && err.code? err.code : err + '';
     }
