@@ -6,6 +6,7 @@ angular.module('bander')
 
  
         $scope.editing  = false;
+        $scope.otherProfile = false;
 
 
 
@@ -18,6 +19,7 @@ angular.module('bander')
           var userId;
           if ($stateParams.profileId) {
             console.log('there were params');
+            // profile does not belong to current user
             $scope.otherProfile = true;
             userId              = $stateParams.profileId;
             var path            = 'users/' + userId;
@@ -37,36 +39,22 @@ angular.module('bander')
 
 
 
-        // waitForAuth.then(function(){
-        //   var userId;
-        //   if ($stateParams.profileId) {
-        //     $scope.otherProfile = true;
-        //     userId              = $stateParams.profileId;
-        //   } else {
-        //     userId            = $scope.auth.user.id || AuthStorage.get().id;
-        //   }
-        //   var userRef           = $Ref('users/'+userId);
-        //   $scope.user           = userRef;
-        //   $scope.showHeaderName = {val: false};
-        //   $scope.input = {};
-        //   // $scope.input          = $scope.user;
-        //   console.log($scope.user);
-        //   $ionicLoading.hide();
-        // });
+$scope.data = {
+ instrument: null 
+}
 
+$scope.submitInfo = function() {
+  console.log($scope.data.instrument);
 
+  // $scope.user.$inst().$ref().child('/users/' + $scope.user.uid + '/instrument').set($scope.data.instrument);
 
+  console.log($scope.user);
+  $scope.user.$inst().$set("instrument", $scope.data.instrument);
+};
 
-
-// simpleLogin.getUser().then(function(auth){
-//   $timeout(function(){
-//     $scope.auth = auth;
-//     var path = 'users/' + auth.uid;
-//     $scope.user = fbutil.syncObject(path);
-//   },0);
-// });
-// console.log($scope.auth);
-
+$scope.editMode = function() {
+  $scope.editing = !$scope.editing;
+};
 
 $scope.logout = function() {
   console.log("logging out");

@@ -3,6 +3,16 @@
     <h1>Profile</h1>
     {{user.name}}
     {{user.email}}
+    <br/>
+    user.instrument - {{user.instrument}}
+
+    instrument - {{data.instrument}}
      <button ng-click="logout()">Log Out</button>
+     <button ng-show="!otherProfile && !editing" ng-click="editMode()">Edit</button>
+     <button ng-show="!otherProfile && editing" ng-click="editMode()">Cancel</button>
+	 <label class="item item-input" ng-show="editing">
+		<input type="text" ng-model="data.instrument" placeholder="guitar" >
+	 </label>
+	 <button ng-show="editing" ng-click="submitInfo()">Submit</button>
   </ion-content>
 </ion-view>
