@@ -11,7 +11,7 @@ angular.module('bander')
       $scope.err = null;
       simpleLogin.login(email, pass)
         .then(function(user) {
-          console.log("fart")
+          console.log("fart");
           console.log(user);
           $location.path('/tab/profile');
         }, function(err) {

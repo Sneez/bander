@@ -1,7 +1,7 @@
 angular.module('bander.controllers', []);
 angular.module('bander.services', []);
 
-angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'simpleLogin', 'firebase'])
+angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'simpleLogin', 'firebase', 'simpleLoginTools'])
 
 
 .run(function($ionicPlatform) {
@@ -50,6 +50,15 @@ angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'sim
         }
       }
     })
+
+    .state('profile', {
+        // Profile when viewed by different user
+        url: '/other/profile/:profileId',
+        controller: 'ProfileCtrl',
+        templateUrl: 'profile/profile.html'
+    })
+
+
 
     .state('tab.friends', {
       url: '/friends',
