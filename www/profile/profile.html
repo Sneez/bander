@@ -4,15 +4,149 @@
     {{user.name}}
     {{user.email}}
     <br/>
-    user.instrument - {{user.instrument}}
-
-    instrument - {{data.instrument}}
+    City - {{user.city}}
+    <br/>
+    State - {{user.state}}
+    <br/>
+    Instrument(s) - {{user.guitar}} {{user.bass}} {{user.drums}} {{user.vocals}}
+    <br/>
+    Genre - {{user.genre}}
+    <br/>
+    Influences - {{user.influences}}
+    <br/>
+    Goals - {{user.goals}}
+    <br/>
      <button ng-click="logout()">Log Out</button>
      <button ng-show="!otherProfile && !editing" ng-click="editMode()">Edit</button>
      <button ng-show="!otherProfile && editing" ng-click="editMode()">Cancel</button>
-	 <label class="item item-input" ng-show="editing">
-		<input type="text" ng-model="data.instrument" placeholder="guitar" >
-	 </label>
+     <br/>
+     <br/>
+     <label class="item item-input" ng-show="editing">
+        <input type="text" ng-model="data.city" placeholder="City" >
+     </label>
+     <label class="item item-input item-select" ng-show="editing">
+       <div class="input-label">
+         State
+       </div>
+       <select ng-model="data.state">
+         <option>AL</option>
+         <option>AK</option>
+         <option>AR</option>
+         <option>AZ</option>
+         <option>CA</option>
+         <option>CO</option>
+         <option>CT</option>
+         <option>DE</option>
+         <option>FL</option>
+         <option>GA</option>
+         <option>HI</option>
+         <option>ID</option>
+         <option>IL</option>
+         <option>IN</option>
+         <option>IA</option>
+         <option>KS</option>
+         <option>KY</option>
+         <option>LA</option>
+         <option>ME</option>
+         <option>MD</option>
+         <option>MA</option>
+         <option>MI</option>
+         <option>MN</option>
+         <option>MS</option>
+         <option>MO</option>
+         <option>MT</option>
+         <option>NE</option>
+         <option>NH</option>
+         <option>NV</option>
+         <option>NJ</option>
+         <option>NM</option>
+         <option>NY</option>
+         <option>NC</option>
+         <option>ND</option>
+         <option>OH</option>
+         <option>OK</option>
+         <option>OR</option>
+         <option>PA</option>
+         <option>RI</option>
+         <option>SC</option>
+         <option>SD</option>
+         <option>TN</option>
+         <option>TX</option>
+         <option>UT</option>
+         <option>VT</option>
+         <option>VA</option>
+         <option>DC</option>
+         <option>WA</option>
+         <option>WV</option>
+         <option>WI</option>
+         <option>WY</option>
+       </select>
+     </label>
+
+     <h5 ng-show="editing"> Instrument(s) </h5>
+     <ul class="list" ng-show="editing">
+       <li class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" 
+                ng-model="data.guitar"
+                ng-true-value="Guitar"
+                ng-false-value="">
+          </label>
+          Guitar
+       </li>
+       <li class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" 
+                ng-model="data.bass"
+                ng-true-value="Bass"
+                ng-false-value="">
+          </label>
+          Bass
+       </li>
+       <li class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" 
+                ng-model="data.drums"
+                ng-true-value="Drums"
+                ng-false-value="">
+          </label>
+          Drums
+       </li>
+       <li class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" 
+                ng-model="data.vocals"
+                ng-true-value="Vocals"
+                ng-false-value="">
+          </label>
+          Vocals
+       </li>
+
+     <label class="item item-input item-select" ng-show="editing">
+       <div class="input-label">
+         Genre
+       </div>
+       <select ng-model="data.genre">
+         <option>Alternative Rock</option>
+         <option>Electronic</option>
+         <option>Hip-Hop</option>
+         <option>Jazz</option>
+         <option>Metal</option>
+         <option>Pop</option>
+         <option>Punk</option>
+         <option>Rock</option>
+       </select>
+     </label>
+
+
+     <h5 ng-show="editing"> Influences </h5>
+     <label class="item item-input" ng-show="editing">
+        <input type="text" ng-model="data.influences" placeholder="Sabbath" >
+     </label>
+     <h5 ng-show="editing"> Goals </h5>
+     <label class="item item-input" ng-show="editing">
+        <input type="text" ng-model="data.goals" placeholder="rule the world" >
+     </label>
 	 <button ng-show="editing" ng-click="submitInfo()">Submit</button>
   </ion-content>
 </ion-view>
