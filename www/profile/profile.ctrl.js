@@ -15,29 +15,27 @@ angular.module('bander')
         console.log('$stateParams');
         console.log($stateParams);
 
-        waitForAuth.then(function(){
-          var userId;
-          if ($stateParams.profileId) {
-            console.log('there were params');
-            // profile does not belong to current user
-            $scope.otherProfile = true;
-            userId              = $stateParams.profileId;
-            var path            = 'users/' + userId;
-            $scope.user         = fbutil.syncObject(path);
-          } else {
-            console.log('there were no params');
-            simpleLogin.getUser().then(function(auth){
-              console.log("outside timeout");
-              $timeout(function(){
-                console.log("inside timeout");
-                $scope.auth = auth;
-                var path = 'users/' + auth.uid;
-                $scope.user = fbutil.syncObject(path);
-              },0);
-            });
-          }
-          console.log($scope.user);
-        });
+        var userId;
+        if ($stateParams.profileId) {
+          console.log('there were params');
+          // profile does not belong to current user
+          $scope.otherProfile = true;
+          userId              = $stateParams.profileId;
+          var path            = 'users/' + userId;
+          $scope.user         = fbutil.syncObject(path);
+        } else {
+          console.log('there were no params');
+          simpleLogin.getUser().then(function(auth){
+            console.log("outside timeout");
+            $timeout(function(){
+              console.log("inside timeout");
+              $scope.auth = auth;
+              var path = 'users/' + auth.uid;
+              $scope.user = fbutil.syncObject(path);
+            },0);
+          });
+        }
+        console.log($scope.user);
 
 
 
