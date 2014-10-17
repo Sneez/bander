@@ -1,6 +1,25 @@
-<ion-view title="Profile">
-  <ion-content class="padding">
-    <h1>Profile</h1>
+<ion-view hide-nav-bar="true">
+
+<!--   <ion-view title="Profile" hide-nav-bar="!otherProfile">
+  <ion-nav-back-button class="button-clear" >
+    <i class="ion-arrow-left-c"></i> Back
+  </ion-nav-back-button>
+ -->
+
+
+
+
+
+
+  <ion-content class="padding" >
+    <div class="bar bar-header bar-light">
+        <button class="button button-icon icon ion-ios7-arrow-back dag-go-back" ng-click="goBack()" ng-hide="!otherProfile">
+        </button>
+        <h1 class="title" style="color: #444 !important;">Profile</h1>
+    </div>
+    <br>
+    <br>
+    <br>
     {{user.name}}
     {{user.email}}
     <br/>
