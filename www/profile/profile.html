@@ -6,11 +6,6 @@
   </ion-nav-back-button>
  -->
 
-
-
-
-
-
   <ion-content class="padding" >
     <div class="bar bar-header bar-light">
         <button class="button button-icon icon ion-ios7-arrow-back dag-go-back" ng-click="goBack()" ng-hide="!otherProfile">
@@ -20,8 +15,23 @@
     <br>
     <br>
     <br>
-    {{user.name}}
-    {{user.email}}
+    <h1>{{user.name}}'s Profile</h1>
+
+<br>
+    
+    <div class="list">
+      <div class"item" ng-repeat="(key, invite) in myInvites" type="item-text-wrap">
+        <h4>Friend request from {{invite.userName}}!</h4>
+        <a class="button button-stable button-small" href="#other/profile/{{key}}">View Profile</a>
+        <a class="button button-stable button-small" ng-click="acceptInvite(key)">Accept</a>
+        <a class="button button-stable button-small" ng-click="declineInvite(key)">Decline</a>
+      </div>
+    </div>
+
+<br>
+
+
+    Email - {{user.email}}
     <br/>
     City - {{user.city}}
     <br/>
@@ -35,9 +45,11 @@
     <br/>
     Goals - {{user.goals}}
     <br/>
-     <button ng-click="logout()">Log Out</button>
-     <button ng-show="!otherProfile && !editing" ng-click="editMode()">Edit</button>
-     <button ng-show="!otherProfile && editing" ng-click="editMode()">Cancel</button>
+     <button class="button button-stable" ng-click="logout()" ng-show="!otherProfile">Log Out</button>
+     <button class="button button-stable" ng-click="friendRequest()" ng-show="otherProfile">Add Friend</button>
+     <button class="button button-stable" ng-click="" ng-show="otherProfile">Send Message</button>
+     <button class="button button-stable" ng-show="!otherProfile && !editing" ng-click="editMode()">Edit</button>
+     <button class="button button-stable" ng-show="!otherProfile && editing" ng-click="editMode()">Cancel</button>
      <br/>
      <br/>
      <label class="item item-input" ng-show="editing">
@@ -166,6 +178,16 @@
      <label class="item item-input" ng-show="editing">
         <input type="text" ng-model="data.goals" placeholder="rule the world" >
      </label>
-	 <button ng-show="editing" ng-click="submitInfo()">Submit</button>
+     <br>
+	 <button class="button button-stable" ng-show="editing" ng-click="submitInfo()">Submit</button>
+<!--     <div class="list">
+      <div class="item" ng-repeat="(key, invite) in data.myInvites">
+        Friend request!
+      </div>
+    </div> -->
+
+
+
+
   </ion-content>
 </ion-view>

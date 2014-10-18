@@ -13,20 +13,21 @@ angular.module('bander')
 		console.log($scope.filters);
 		for (user in $scope.users) {
 			if ($scope.users.hasOwnProperty(user) && (user.charAt(0) != "$") ) {
-
-				console.log($scope.filters.city);
-
 				if($scope.filters.city && ($scope.filters.city != $scope.users[user].city) ){
 					$scope.filteredUsers[user] = null;
 					delete $scope.filteredUsers[user];
-				} else if ($scope.filters.state && ($scope.filters.state != $scope.users[user].state) ){
+				} 
+				else if ($scope.filters.state && ($scope.filters.state != $scope.users[user].state) ){
 					$scope.filteredUsers[user] = null;
 					delete $scope.filteredUsers[user];
 				}
-				else if($scope.filters.instrument && ($scope.filters.instrument != 
-					($scope.users[user].guitar || $scope.users[user].bass || $scope.users[user].drums || $scope.users[user].vocals))){
-					$scope.filteredUsers[user] = null;
-					delete $scope.filteredUsers[user];
+				else if($scope.filters.instrument){
+					var instr = $scope.filters.instrument;
+					if ((instr!=$scope.users[user].guitar) &&  (instr!=$scope.users[user].bass) 
+						&& (instr!=$scope.users[user].drums) && (instr!=$scope.users[user].vocals)){
+						$scope.filteredUsers[user] = null;
+						delete $scope.filteredUsers[user];
+					}
 				}
 				else if($scope.filters.genre && ($scope.filters.genre != $scope.users[user].genre) ){
 					$scope.filteredUsers[user] = null;

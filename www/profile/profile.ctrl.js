@@ -13,8 +13,8 @@ angular.module('bander')
 
         $scope.input = {};
 
-        console.log('$stateParams');
-        console.log($stateParams);
+        console.log($scope.user);
+        console.log($stateParams.profileId);
 
         var userId;
         if ($stateParams.profileId) {
@@ -40,37 +40,12 @@ angular.module('bander')
 
 
 
-$scope.data = {
- // city: '',
- // state: '',
- // guitar: '',
- // bass: '',
- // drums: '',
- // vocals: '',
- // genre: '',
- // influences: '',
- // goals: ''
-};
+$scope.data = {};
 
 $scope.submitInfo = function() {
-
-  // $scope.user.$inst().$ref().child('/users/' + $scope.user.uid + '/instrument').set($scope.data.instrument);
-
   console.log($scope.data);
-  // for (prop in $scope.data) {
-  //   if ($scope.data.hasOwnProperty(prop) ) {
-  //     expression
-  //   }
-  // }
   $scope.user.$inst().$update($scope.data);
-  // $scope.user.$inst().$set("state", $scope.data.state);
-  // $scope.user.$inst().$set("guitar", $scope.data.guitar);
-  // $scope.user.$inst().$set("bass", $scope.data.bass);
-  // $scope.user.$inst().$set("drums", $scope.data.drums);
-  // $scope.user.$inst().$set("vocals", $scope.data.vocals);
-  // $scope.user.$inst().$set("genre", $scope.data.genre);
-  // $scope.user.$inst().$set("influences", $scope.data.influences);
-  // $scope.user.$inst().$set("goals", $scope.data.goals);
+
 };
 
 $scope.editMode = function() {
@@ -82,5 +57,60 @@ $scope.logout = function() {
   simpleLogin.logout();
   $location.path('/login');
 };
+
+$scope.friendRequest = function() {
+  var requestSender;
+  var requested = $stateParams.profileId;
+  simpleLogin.getUser().then(function(auth){
+    var path = 'users/' + auth.uid;
+    $scope.userTemp = fbutil.syncObject(path);
+    $scope.userTemp.$loaded().then(function(){
+
+      console.log($scope.userTemp.name);
+
+      var inputObject = {
+          time: Firebase.ServerValue.TIMESTAMP,
+          userName: $scope.userTemp.name
+      };
+
+      fbutil.ref('invites/').child(requested).child(auth.uid).set(inputObject);
+    });
+  });
+};
+
+$scope.acceptInvite = function(key){
+  simpleLogin.getUser().then(function(auth){
+
+    fbutil.ref('friends/'+auth.uid+'/'+key).set(1);
+    fbutil.ref('friends/'+key+'/'+auth.uid).set(2);
+  });
+    $scope.declineInvite(key);
+};
+
+
+$scope.declineInvite = function(key){
+
+  simpleLogin.getUser().then(function(auth){
+    console.log(auth.uid);
+    fbutil.ref('invites/'+auth.uid+'/'+key).set(null, function(err){
+      if(!err){
+        console.log('remove successful');
+      } else if (err){
+        console.log('there was an error removing ' + err);
+      }
+    });
+  });
+};
+
+if(!$scope.otherProfile){
+  simpleLogin.getUser().then(function(auth){
+    //$scope.myInvites = $firebase(fbutil.ref('/invites/'+auth.uid)).$asObject();
+    $scope.myInvites = fbutil.syncObject('invites/'+auth.uid);
+    console.log($scope.myInvites);
+  });
+}
+
+
+
 
 });

@@ -58,23 +58,12 @@ angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'sim
         templateUrl: 'profile/profile.html'
     })
 
-
-
     .state('tab.friends', {
       url: '/friends',
       views: {
         'tab-friends': {
           templateUrl: 'friends/friends.html',
           controller: 'FriendsCtrl'
-        }
-      }
-    })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
-      views: {
-        'tab-friends': {
-          templateUrl: 'friends/friend-detail.html',
-          controller: 'FriendDetailCtrl'
         }
       }
     })
