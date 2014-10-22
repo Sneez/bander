@@ -23,7 +23,7 @@
       <div class"item" ng-repeat="(key, invite) in myInvites" type="item-text-wrap">
         <h4>Friend request from {{invite.userName}}!</h4>
         <a class="button button-stable button-small" href="#other/profile/{{key}}">View Profile</a>
-        <a class="button button-stable button-small" ng-click="acceptInvite(key)">Accept</a>
+        <a class="button button-stable button-small" ng-click="acceptInvite(key, invite.userName)">Accept</a>
         <a class="button button-stable button-small" ng-click="declineInvite(key)">Decline</a>
       </div>
     </div>
@@ -47,7 +47,8 @@
     <br/>
      <button class="button button-stable" ng-click="logout()" ng-show="!otherProfile">Log Out</button>
      <button class="button button-stable" ng-click="friendRequest()" ng-show="otherProfile">Add Friend</button>
-     <button class="button button-stable" ng-click="" ng-show="otherProfile">Send Message</button>
+     <button class="button button-stable" ng-click="sendMessage()" ng-show="otherProfile">Send Message
+     </button>
      <button class="button button-stable" ng-show="!otherProfile && !editing" ng-click="editMode()">Edit</button>
      <button class="button button-stable" ng-show="!otherProfile && editing" ng-click="editMode()">Cancel</button>
      <br/>

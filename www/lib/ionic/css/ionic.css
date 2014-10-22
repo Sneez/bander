@@ -4751,6 +4751,64 @@ a.item-content {
   padding-left: 1px; }
 
 /**
+ * Dagmate stuff
+ * --------------------------------------------------
+ * weeeeee
+ */
+ .chat{
+	/*width: 100vw;*/
+} .chat > .scroll:first-child{
+	display: block !important;
+}
+
+/*#chat{
+	height                    : 87vh;
+	position                  : relative;
+	width         : 100vw;
+	margin-bottom : 0;
+	padding-bottom: 0;
+	overflow-y                : scroll;
+	-webkit-overflow-scrolling:touch;
+}*/
+
+.message-input{
+	display      : inline-block !important;
+	min-height   : 35px !important;
+	margin-top   : 6px !important;
+	margin-bottom: 6px !important;
+	padding-top  : 8px;
+	font-size    : 17px;
+	bottom       : 0 !important;
+	width        : 78%;
+	height       : 35px;
+	right        : 20%;
+	position     : absolute !important;
+	border-radius: 6px;
+}.message-input:after { 
+		content: "";
+		display: block; 
+		clear  : both;
+}
+
+.message-form{
+	height          : 46px;
+	min-height      : 46px !important;
+	z-index         : 99;
+	bottom          : 0;
+	background-color: rgb(230, 230, 230);
+	padding         : 0;
+	margin          : 0;
+	position        : fixed !important;
+}
+
+.message-button{
+	position    : absolute !important;
+	right       : 0 !important;
+	bottom      : 0 !important;
+	margin-left : 2%;
+	margin-right: 2%;
+}
+ /**
  * Cards and Inset Lists
  * --------------------------------------------------
  * A card and list-inset are close to the same thing, except a card as a box shadow.

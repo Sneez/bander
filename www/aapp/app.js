@@ -58,6 +58,13 @@ angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'sim
         templateUrl: 'profile/profile.html'
     })
 
+
+    .state('chat', {
+        url: '/chat/:chatId',
+        controller: 'ChatCtrl',
+        templateUrl: 'messages/chat.html'
+    })
+
     .state('tab.friends', {
       url: '/friends',
       views: {

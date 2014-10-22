@@ -78,13 +78,25 @@ $scope.friendRequest = function() {
   });
 };
 
-$scope.acceptInvite = function(key){
+$scope.acceptInvite = function(key, name){
   simpleLogin.getUser().then(function(auth){
 
-    fbutil.ref('friends/'+auth.uid+'/'+key).set(1);
-    fbutil.ref('friends/'+key+'/'+auth.uid).set(2);
+
+    fbutil.ref('friends/'+auth.uid+'/'+key).set({
+      userName: name
+    });
+
+    var path = 'users/' + auth.uid;
+    $scope.userTemp = fbutil.syncObject(path);
+    $scope.userTemp.$loaded().then(function(){
+
+    console.log($scope.userTemp.name);
+      fbutil.ref('friends/'+key+'/'+auth.uid).set({
+        userName: $scope.userTemp.name
+      });
+    });
   });
-    $scope.declineInvite(key);
+  $scope.declineInvite(key);
 };
 
 
@@ -101,6 +113,91 @@ $scope.declineInvite = function(key){
     });
   });
 };
+
+$scope.sendMessage = function(){
+
+  var alreadyExists = false;
+
+  simpleLogin.getUser().then(function(auth){
+    $scope.ifAlready = fbutil.syncObject('messages/'+$stateParams.profileId+'/'+auth.uid);
+    console.log($scope.ifAlready);
+    console.log("stateparams: " + $stateParams.profileId);
+    console.log("auth.uid: " + auth.uid);
+
+
+
+    $scope.ifAlready.$loaded().then(function(){
+      console.log($scope.ifAlready.chatId);
+      if(typeof $scope.ifAlready.chatId != "undefined"){
+        alreadyExists = true;
+      }
+      console.log("alreadyExists: " + alreadyExists);
+
+
+ if(alreadyExists == true){
+    $location.path('chat/' + $scope.ifAlready.chatId);
+ } 
+ else {
+  var messageRef = fbutil.ref('chat/').push({
+    temp: 1
+  });
+  var chatIdTemp = messageRef.toString();
+  console.log(chatIdTemp);
+  var chatId = chatIdTemp.slice(35);
+  console.log(chatId);
+
+
+  simpleLogin.getUser().then(function(auth){
+
+    var sendee = $stateParams.profileId;  
+    var path = 'users/' + $stateParams.profileId;
+    $scope.sendeeTemp = fbutil.syncObject(path);
+
+    $scope.sendeeTemp.$loaded().then(function(){
+      console.log($stateParams.profileId);
+      console.log($scope.sendeeTemp.name);
+      fbutil.ref('messages/'+auth.uid+'/'+$stateParams.profileId).set({
+        userName: $scope.sendeeTemp.name,
+        chatId: chatId
+      });
+    });
+
+
+    var path = 'users/' + auth.uid;
+    $scope.userTemp = fbutil.syncObject(path);
+    $scope.userTemp.$loaded().then(function(){
+
+    console.log($scope.userTemp.name);
+      fbutil.ref('messages/'+$stateParams.profileId+'/'+auth.uid).set({
+        userName: $scope.userTemp.name,
+        chatId: chatId
+      });
+    });
+    $location.path('chat/' + chatId);
+
+  });
+ }
+
+
+ 
+    });
+  });
+
+
+
+
+};
+
+
+
+// $scope.getName = function(key){
+//   var path = 'users/' + key;
+//     $scope.userTemp = fbutil.syncObject(path);
+//     $scope.userTemp.$loaded().then(function(){
+//       console.log("name: "+$scope.userTemp.name);
+//       return $scope.userTemp.name;
+//     });
+// };
 
 if(!$scope.otherProfile){
   simpleLogin.getUser().then(function(auth){
