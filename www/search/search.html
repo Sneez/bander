@@ -91,10 +91,11 @@
     <br>
 
     <ion-list>
-      <ion-item ng-repeat="(key, user) in filteredUsers" type="item-text-wrap" href="#other/profile/{{key}}">
+      <ion-item ng-repeat="(key, user) in listUsers" type="item-text-wrap" href="#other/profile/{{key}}">
 
-        {{user.name}}&nbsp;&nbsp;&nbsp;{{user.city}}&nbsp;&nbsp;&nbsp;{{user.state}}&nbsp;&nbsp;&nbsp;
-        {{user.guitar}} {{user.bass}} {{user.drums}} {{user.vocals}}&nbsp;&nbsp;&nbsp;{{user.genre}}
+        <div class="text">{{user.name}}&nbsp;&nbsp;&nbsp;{{user.city}}&nbsp;&nbsp;&nbsp;{{user.state}}&nbsp;&nbsp;&nbsp;
+            {{user.guitar}} {{user.bass}} {{user.drums}} {{user.vocals}}&nbsp;&nbsp;&nbsp;{{user.genre}}
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>

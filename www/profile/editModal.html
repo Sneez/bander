@@ -1,0 +1,149 @@
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Edit Profile</h1>
+     <button class="button button-stable" ng-show="!otherProfile && editing" ng-click="closeModal()">Cancel</button>
+    </ion-header-bar>
+    <ion-content>
+    <br>
+    <div class="list">
+     <label class="item item-input">
+        <input type="text" ng-model="data.city" placeholder="City" >
+     </label>
+     <label class="item item-input item-select">
+       <div class="input-label">
+         State
+       </div>
+       <select ng-model="data.state">
+         <option>AL</option>
+         <option>AK</option>
+         <option>AR</option>
+         <option>AZ</option>
+         <option>CA</option>
+         <option>CO</option>
+         <option>CT</option>
+         <option>DE</option>
+         <option>FL</option>
+         <option>GA</option>
+         <option>HI</option>
+         <option>ID</option>
+         <option>IL</option>
+         <option>IN</option>
+         <option>IA</option>
+         <option>KS</option>
+         <option>KY</option>
+         <option>LA</option>
+         <option>ME</option>
+         <option>MD</option>
+         <option>MA</option>
+         <option>MI</option>
+         <option>MN</option>
+         <option>MS</option>
+         <option>MO</option>
+         <option>MT</option>
+         <option>NE</option>
+         <option>NH</option>
+         <option>NV</option>
+         <option>NJ</option>
+         <option>NM</option>
+         <option>NY</option>
+         <option>NC</option>
+         <option>ND</option>
+         <option>OH</option>
+         <option>OK</option>
+         <option>OR</option>
+         <option>PA</option>
+         <option>RI</option>
+         <option>SC</option>
+         <option>SD</option>
+         <option>TN</option>
+         <option>TX</option>
+         <option>UT</option>
+         <option>VT</option>
+         <option>VA</option>
+         <option>DC</option>
+         <option>WA</option>
+         <option>WV</option>
+         <option>WI</option>
+         <option>WY</option>
+       </select>
+     </label>
+
+    <div class="item item-divider"> Instrument(s)  </div>     
+     <ul class="list">
+       <li class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" 
+                ng-model="data.guitar"
+                ng-true-value="Guitar"
+                ng-false-value="">
+          </label>
+          Guitar
+       </li>
+       <li class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" 
+                ng-model="data.bass"
+                ng-true-value="Bass"
+                ng-false-value="">
+          </label>
+          Bass
+       </li>
+       <li class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" 
+                ng-model="data.drums"
+                ng-true-value="Drums"
+                ng-false-value="">
+          </label>
+          Drums
+       </li>
+       <li class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" 
+                ng-model="data.vocals"
+                ng-true-value="Vocals"
+                ng-false-value="">
+          </label>
+          Vocals
+       </li>
+
+     <label class="item item-input item-select">
+       <div class="input-label">
+         Genre
+       </div>
+       <select ng-model="data.genre">
+         <option>Alternative Rock</option>
+         <option>Electronic</option>
+         <option>Hip-Hop</option>
+         <option>Jazz</option>
+         <option>Metal</option>
+         <option>Pop</option>
+         <option>Punk</option>
+         <option>Rock</option>
+       </select>
+     </label>
+
+
+    <div class="item item-divider"> Influences  </div>     
+
+    <label class="item item-input">
+        <input type="text" ng-model="data.influences" placeholder="Sabbath" >
+     </label>
+    <div class="item item-divider"> Goals </div>     
+     <label class="item item-input">
+        <input type="text" ng-model="data.goals" placeholder="rule the world" >
+     </label>
+    <div class="item item-divider"> YouTube Example of Your Work (use link under 'Share') </div>     
+     <label class="item item-input">
+        <input type="text" ng-model="data.stream_url" placeholder="http://youtu.be/fMEW0Du9p7s" >
+     </label>
+   </div>
+	 <button class="button button-stable" ng-click="closeModal()">Submit</button>
+<!--     <div class="list">
+      <div class="item" ng-repeat="(key, invite) in data.myInvites">
+        Friend request!
+      </div>
+    </div> -->
+    </ion-content>
+  </ion-modal-view>
+

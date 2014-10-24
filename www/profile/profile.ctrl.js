@@ -1,11 +1,31 @@
 angular.module('bander')
 
 
-.controller('ProfileCtrl', function ($scope, simpleLogin, $location, $timeout, $firebase, fbutil, $stateParams, waitForAuth, $ionicNavBarDelegate) {
+.controller('ProfileCtrl', function ($scope, simpleLogin, $location, $timeout, $firebase, fbutil, $stateParams, waitForAuth, $ionicNavBarDelegate, $ionicModal, $ionicBackdrop, ytConvert, mapStyle) {
 
  
         $scope.editing  = false;
         $scope.otherProfile = false;
+        $scope.user = {};
+        $scope.isVideo = false;
+
+
+        
+
+        console.log('mapView true');
+        $scope.mapView = true;
+        $scope.listView = false;
+        var mapOptions = {
+          center: new google.maps.LatLng(36.977598,-122.030495),
+          zoom: 13,
+          styles: mapStyle.get()
+        };
+        console.log(mapStyle.get());
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      console.log('maaaaappp');
+
+
 
         $scope.goBack = function(){
           $ionicNavBarDelegate.back();
@@ -24,6 +44,25 @@ angular.module('bander')
           userId              = $stateParams.profileId;
           var path            = 'users/' + userId;
           $scope.user         = fbutil.syncObject(path);
+            $scope.user.$loaded().then(function(){
+
+              if(typeof $scope.user.stream_url != 'undefined'){
+                $scope.isVideo = true;
+
+              }
+
+              if(typeof $scope.user.city != 'undefined' || typeof $scope.user.state != 'undefined'){
+                console.log('dis shit right here');
+                var place = $scope.user.city + ", " + $scope.user.state;
+  
+                geocoder.geocode( {'address' : place}, function(results, status) {
+                  if (status == google.maps.GeocoderStatus.OK) {
+                      map.setCenter(results[0].geometry.location);
+                  }
+                });
+              }
+            });
+
         } else {
           console.log('there were no params');
           simpleLogin.getUser().then(function(auth){
@@ -33,10 +72,62 @@ angular.module('bander')
               $scope.auth = auth;
               var path = 'users/' + auth.uid;
               $scope.user = fbutil.syncObject(path);
+              $scope.user.$loaded().then(function(){
+
+              if(typeof $scope.user.stream_url != 'undefined'){
+                $scope.isVideo = true;
+
+              }
+  
+                if(typeof $scope.user.city != 'undefined' || typeof $scope.user.state != 'undefined'){
+                  console.log('dis shit right here');
+                  var place = $scope.user.city + ", " + $scope.user.state;
+    
+                  geocoder.geocode( {'address' : place}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                    }
+                  });
+                }
+              });
+
             },0);
           });
         }
-        console.log($scope.user);
+
+
+
+  $ionicModal.fromTemplateUrl('profile/editModal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.editing = true;
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.submitInfo();
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    $ionicBackdrop.release();
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    $ionicBackdrop.release();
+  });
+
+
+
+
+
 
 
 

@@ -1,7 +1,8 @@
 angular.module('bander.controllers', []);
 angular.module('bander.services', []);
+angular.module('bander.filters', []);
 
-angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'simpleLogin', 'firebase', 'simpleLoginTools'])
+angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'bander.filters', 'simpleLogin', 'firebase', 'simpleLoginTools'])
 
 
 .run(function($ionicPlatform) {
@@ -17,6 +18,8 @@ angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'sim
     }
   });
 })
+
+
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -98,5 +101,5 @@ angular.module('bander', ['ionic', 'bander.controllers', 'bander.services', 'sim
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
-});
+})
 
