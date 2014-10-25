@@ -1,0 +1,53 @@
+<ion-view hide-nav-bar="true">
+
+
+<ion-content scroll="true">
+  <div class="bar bar-header bar-light">
+      <button class="button button-icon icon ion-ios7-arrow-back dag-go-back" ng-click="goBack()"></button>
+      <h1 class="title" style="color: #444 important;">Chat</h1>
+  </div>
+
+
+ <br>
+ <br>
+ <br>
+
+<!--   <label class="item item-input">
+    <input type="text" ng-model="data.message">
+  </label>
+  <button class="button button-stable" ng-click="addMessage(data.message)">Submit</button> -->
+
+
+
+
+  <ion-item ng-repeat="(key, chat) in messages" type="item-text-wrap">
+    {{chat.userName}}: {{chat.message}}
+  </ion-item>
+</ion-content>
+
+    <div id="messageForm_wrap" class="message-form-wrap">
+      <form expand-input action="javascript:;" class="row message-form" id="messageForm" name="messageForm">
+        <textarea ng-model="data.message" id="messageInput" class="message-input" focus-on="focusMe" form="messageForm"></textarea>
+        <button class="button button-clear button-positive message-button" ng-click="addMessage(data.message)" type="submit" id="messageButton">Send</button>  
+      </form>
+    </div>
+
+<!-- <div class="list">
+  <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" ng-model="data.message">
+    </label>
+    <button class="button button-small" ng-click="addMessage(data.message)">
+      Submit
+    </button>
+  </div>
+
+</div> -->
+
+
+</ion-view>
+
+
+
+
+

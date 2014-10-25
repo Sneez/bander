@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Bander</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="http://code.ionicframework.com/1.0.0-beta.13/js/ionic.bundle.js"></script>
+
+    <script src="cordova.js"></script>
+
+    <script src="//cdn.firebase.com/js/client/1.0.23/firebase.js"></script>
+    <script src="//cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+    <script src="//cdn.firebase.com/js/simple-login/1.6.3/firebase-simple-login.js"></script>
+
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpyhfQAXAvTyVlPZwCid1x5eHK1eFGN5E&sensor=true">
+    </script>
+
+
+    <!-- your app's js -->
+    <script src="aapp/app.js"></script>
+    <script src="aapp/config.js"></script>
+    <script src="ngfire/filters.js"></script>
+    <script src="login/module.simpleLoginTools.js"></script> 
+    <script src="profile/profile.ctrl.js"></script>
+    <script src="friends/friends.ctrl.js"></script>
+    <script src="messages/messages.ctrl.js"></script>
+    <script src="search/search.ctrl.js"></script>
+    <script src="ngfire/changeEmail.js"></script>
+    <script src="login/simpleLogin.js"></script>
+    <script src="login/login.ctrl.js"></script>
+    <script src="messages/chat.ctrl.js"></script>
+    <script src="profile/profile.directives.js"></script>
+
+
+
+    <!-- // <script src="ngfire/app.js"></script> -->
+    <!-- // <script src="ngfire/changeEmail.js"></script> -->
+    <!-- // <script src="ngfire/config.js"></script> -->
+    <!-- // <script src="ngfire/controllers.js"></script> -->
+    <!-- // <script src="ngfire/decorators.js"></script> -->
+    <!-- // <script src="ngfire/directives.js"></script> -->
+    <!-- // <script src="ngfire/filters.js"></script> -->
+     <script src="ngfire/firebase.utils.js"></script>
+     <script src="ngfire/services.js"></script>
+
+
+  </head>
+  <body ng-app="bander" animation="slide-left-right-ios7" class="platform-ios platform-cordova platform-webview">
+    <!-- 
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+        Back
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <!-- 
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: -34.397, lng: 150.644},
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+      }
+      var geocoder = new google.maps.Geocoder();
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+  </body>
+</html>
+<!--  -->

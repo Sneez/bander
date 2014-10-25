@@ -1,0 +1,16 @@
+2014-10-24 17:35:21.506 findaband[1020:70b] Multi-tasking -> Device: YES, App: YES
+2014-10-24 17:35:21.597 findaband[1020:70b] Unlimited access to network resources
+2014-10-24 17:35:21.893 findaband[1020:70b] [CDVTimer][keyboard] 0.105023ms
+2014-10-24 17:35:21.894 findaband[1020:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-24 17:35:21.894 findaband[1020:70b] [CDVTimer][statusbar] 0.671029ms
+2014-10-24 17:35:21.895 findaband[1020:70b] [CDVTimer][TotalPluginStartup] 2.225041ms
+2014-10-24 17:35:22.179 findaband[1020:70b] Resetting plugins due to page load.
+2014-10-24 17:35:22.889 findaband[1020:70b] Finished load of: file:///Users/ericstanton/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/F76C3DDA-0BB5-41BC-80D5-1C8C97A1376F/findaband.app/www/index.html
+2014-10-24 17:36:14.635 findaband[1388:70b] Multi-tasking -> Device: YES, App: YES
+2014-10-24 17:36:14.643 findaband[1388:70b] Unlimited access to network resources
+2014-10-24 17:36:14.661 findaband[1388:70b] [CDVTimer][keyboard] 0.065029ms
+2014-10-24 17:36:14.661 findaband[1388:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-24 17:36:14.662 findaband[1388:70b] [CDVTimer][statusbar] 0.505984ms
+2014-10-24 17:36:14.662 findaband[1388:70b] [CDVTimer][TotalPluginStartup] 1.534998ms
+2014-10-24 17:36:14.721 findaband[1388:70b] Resetting plugins due to page load.
+2014-10-24 17:36:15.273 findaband[1388:70b] Finished load of: file:///Users/ericstanton/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/F76C3DDA-0BB5-41BC-80D5-1C8C97A1376F/findaband.app/www/index.html

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>598FAF89-EF4F-4B0B-A12E-026BB8DE972D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>findaband</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D396C368-9555-4E1F-AEA6-CBD2A41A0626</key>
+		<string>https://github.com/Sneez/bander.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/findaband.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D396C368-9555-4E1F-AEA6-CBD2A41A0626</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Sneez/bander.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D396C368-9555-4E1F-AEA6-CBD2A41A0626</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D396C368-9555-4E1F-AEA6-CBD2A41A0626</string>
+			<key>IDESourceControlWCCName</key>
+			<string>bander</string>
+		</dict>
+	</array>
+</dict>
+</plist>
